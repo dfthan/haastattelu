@@ -1,6 +1,14 @@
 version: "3"
 
 services:
+    database:
+        image: mongo
+        ports:
+            - 27017:27017
+        volumes:
+            - ./data:/data/db
+        container_name: database-development
+
     backend:
         image: backend-development
         build:
@@ -11,6 +19,9 @@ services:
         environment:
             - NODE_ENV=development
             - PORT=3001
+            - MONGODB_URI=mongodb://database/devdb:27017
         ports:
             - 3001:3001
+        depends_on:
+            - database
         container_name: backend-development
