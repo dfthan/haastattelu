@@ -3,26 +3,28 @@ version: "3"
 services:
     database:
         image: mongo
+        logging:
+            driver: none
         ports:
             - 27017:27017
         volumes:
             - ./data:/data/db
-        container_name: database-dev
+        container_name: database-test
 
     backend:
-        image: backend-dev
+        image: backend-test
         build:
             context: .
             dockerfile: Dockerfile
-            target: dev
+            target: test
         volumes:
             - .:/usr/src/app
         environment:
-            - NODE_ENV=development
+            - NODE_ENV=test
             - PORT=3001
-            - MONGODB_URI=mongodb://database/devdb:27017
+            - MONGODB_URI=mongodb://database/testdb:27017
         ports:
             - 3001:3001
         depends_on:
             - database
-        container_name: backend-dev
+        container_name: backend-test
