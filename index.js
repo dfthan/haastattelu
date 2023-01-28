@@ -10,5 +10,7 @@ connectDB()
 app.use("/customers", require("./controllers/customers"))
 
 app.listen(PORT, () => {
-  console.log(`App listening on ${PORT}`)
+    console.log(`App listening on ${PORT}`)
 })
+
+module.exports = app;
