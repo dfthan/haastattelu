@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
     customer.save((err, customer) => {
         if (err) {
             console.error(err);
-            return res.status(404).send("Error creating customer");
+            return res.status(404).send(err.message);
         }
         res.status(201).send(customer);
     });
