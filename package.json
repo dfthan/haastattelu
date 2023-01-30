@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node index.js",
 		"dev": "nodemon index.js",
-		"test": "mocha --exit"
+		"test": "mocha --exit",
+		"test:price": "mocha ./test/price.test.js"
 	},
 	"author": "Hannu",
 	"license": "ISC",
