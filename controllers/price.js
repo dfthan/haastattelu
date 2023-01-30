@@ -14,7 +14,6 @@ router.post("/", async (req, res) => {
     if (!product) {
         return res.status(404).send("Product not found");
     }
-    console.log(product.price)
 
     const discountedPrice = calculatePrice(product.price, discountOptions)
 
